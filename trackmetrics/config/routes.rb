@@ -1,5 +1,6 @@
 Trackmetrics::Application.routes.draw do
 
-  # root 'welcome#index'
+  devise_for :events
+  #root 'events#index'
 
 end
