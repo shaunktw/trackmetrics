@@ -9,6 +9,7 @@ class Event
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
   field :type,               type: String
+  field :name,               type: String
 
   ## Recoverable
   field :reset_password_token,   type: String
