@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+50.times do 
+  Domain.create(
+    name: Faker::Name.name,
+    url:  Faker::Internet.url
+    )
+end
+domains = Domain.all
+
+puts "Seed finished"
+puts"#{Domain.count} domains created"

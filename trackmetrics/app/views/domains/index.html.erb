@@ -1,2 +1,4 @@
-<h1>Domains#index</h1>
-<p>Find me in app/views/domains/index.html.erb</p>
+<h1>All Domains</h1>
+<% @domains.each do |domain| %>
+  <p><%= link_to domain.name, domain_path(domain.id) %></p>
+<% end %>
