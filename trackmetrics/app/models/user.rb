@@ -5,12 +5,14 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-
+  has_many :domains
+         
   ## Database authenticatable
-  field :id,                 type: Integer
+  field :user_id,                 type: Integer
   field :name,               type: String
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
+  index :id, unique: true
 
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
