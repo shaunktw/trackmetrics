@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 50.times do 
   Domain.create(
-    name: Faker::Name.name,
+    name: Faker::Internet.domain_name,
     url:  Faker::Internet.url
     )
 end
