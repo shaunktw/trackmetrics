@@ -2,5 +2,17 @@
 
 <p><%= @domain.url %></p>
 
+<% if !@domain.active? %>
+<div class="alert alert-danger">
+  <strong>Oops!</strong> Your domain is not verified!.
+</div>
+<div class="lead">
+  Please add the following meta tag to your domain root url page
+  <pre><%= "<meta name='trackmetrics_verification' content='#{@domain.verification_token}'/>" %></pre>
+</div>
+<% end %>
 <%= link_to "Edit", edit_domain_path(@domain), class: 'btn btn-success' %>
+<%= link_to "New Domain", new_domain_path(@domain), class: 'btn btn-success' %>
 <p><%= link_to "Back to List", domains_path %></p>
+
+
