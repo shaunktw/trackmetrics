@@ -1,4 +1,4 @@
-<h1>All Domains</h1>
+<h1>My Domains</h1>
 <% if @domains.empty? %>
   <div class="well text-center">
     looks like you don't have any domains, <%= link_to "create one now", new_domain_url %>
@@ -13,5 +13,7 @@
       </div>
     </div>
   <% end %>
-  <%= link_to "Add a new Domain", new_domain_url %>
+  <% if policy(Domain.new).create? %>
+     <%= link_to "Add a new Domain", new_domain_url, class: 'btn btn-success' %>
+  <% end %>
 <% end %>
