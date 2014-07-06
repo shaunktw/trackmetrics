@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <meta name='trackmetrics_verification' content='99e7b9f6b6322e39f672ff268e52082853bc61e6fd568e5c411417a56ad7'/>
 </head>
 <body>
 
@@ -13,7 +14,7 @@
       <li><%= link_to "Trackmetrics", root_path %></li>
       <li><%= link_to "About", about_path %></li>
       <li><%= link_to "Domains", domains_path%></li>
-      
+
 
       <div class="pull-right user-info">
         <% if current_user %>

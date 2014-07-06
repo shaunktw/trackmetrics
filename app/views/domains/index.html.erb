@@ -1,10 +1,17 @@
 <h1>All Domains</h1>
-<% @domains.each do |domain| %>
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <%= link_to domain.name, domain%>
-      </h4>
-    </div>
+<% if @domains.empty? %>
+  <div class="well text-center">
+    looks like you don't have any domains, <%= link_to "create one now", new_domain_url %>
   </div>
+<% else %>
+  <% @domains.each do |domain| %>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= link_to domain.name, domain%>
+        </h4>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to "Add a new Domain", new_domain_url %>
 <% end %>

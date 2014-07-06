@@ -10,6 +10,7 @@
   Please add the following meta tag to your domain root url page
   <pre><%= "<meta name='trackmetrics_verification' content='#{@domain.verification_token}'/>" %></pre>
 </div>
+<%= link_to "I'm all set, verify now", verifications_url(domain_id: @domain.id), method: :post, class: "btn btn-primary" %>
 <% end %>
 <%= link_to "Edit", edit_domain_path(@domain), class: 'btn btn-success' %>
 <%= link_to "New Domain", new_domain_path(@domain), class: 'btn btn-success' %>

@@ -1,18 +1,21 @@
 class DomainsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def index
-    @domains = Domain.all
+    @domains = current_user.domains
   end
 
   def show
-    @domain = Domain.find(params[:id])
+    @domain = current_user.domains.find(params[:id])
   end
 
   def new
-    @domain = Domain.new
+    @domain = current_user.domains.build
   end
 
   def create
-    @domain = Domain.new(params.require(:domain).permit(:name, :url, :domain_uuid))
+    @domain = current_user.domains.build(params.require(:domain).permit(:name, :url))
     if @domain.save
       flash[:notice] = "Domain was saved succesfully."
       redirect_to @domain
@@ -23,12 +26,12 @@ class DomainsController < ApplicationController
   end
 
   def edit
-    @domain = Domain.find(params[:id])
+    @domain = current_user.domains.find(params[:id])
   end
 
   def update
-    @domain = Domain.find(params[:id])
-    if @domain.update_attributes(params.require(:domain).permit(:name,:url), :domain_uuid)
+    @domain = current_user.domains.find(params[:id])
+    if @domain.update_attributes(params.require(:domain).permit(:name,:url))
       flash[:notice] = "Domain was updated"
       redirect_to @domain
     else

@@ -10,6 +10,10 @@ class Domain
 
   before_create :generate_verification_token
 
+  def verify!
+    self.update_attribute(:active, true)
+  end
+  
   protected
 
   def generate_verification_token
