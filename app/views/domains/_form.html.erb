@@ -1,14 +1,26 @@
 <%= form_for @domain do |f| %>
-
+ <% if @domain.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>There are <%= pluralize(@domain.errors.count, "error") %>.</h4>
+      <ul>
+        <% @domain.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= form_group_tag(@domain.errors[:name]) do  %>
 <div class="form-group">
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control', placeholder: "Enter domain name" %>
 </div>
-
+<% end %>
+<%= form_group_tag(@domain.errors[:url]) do %>
 <div class="form-group">
   <%= f.label :url %>
   <%= f.text_field :url, class: 'form-control', placeholder: "Enter domain url" %>
 </div>
+<%end  %>
 
 <div class="form-group">
   <%= f.submit "Save", class: 'btn btn-success' %>

@@ -6,6 +6,10 @@ class Domain
   field :active, type: Boolean, default: false
   field :verification_token, type: String
 
+  validates :name, length: {minimum: 5}, presence: true
+  validates_uniqueness_of :name, :url 
+  validates_format_of :url, :with => URI::regexp(%w(http https http://))
+
   belongs_to :user
 
   before_create :generate_verification_token
