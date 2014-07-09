@@ -4,16 +4,14 @@ class User
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-
-  has_many :domains
          
   ## Database authenticatable
   field :name,               type: String
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
-  validates_presence_of :name
-  validates_uniqueness_of :name, :email, :case_sensitive => false
+  # API authentication
+  field :authentication_token, type: String
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -34,4 +32,17 @@ class User
   field :confirmed_at,         type: Time
   field :confirmation_sent_at, type: Time
   field :unconfirmed_email,    type: String # Only if using reconfirmable
+
+  validates_presence_of :name
+  validates_uniqueness_of :name, :email, :case_sensitive => false
+
+  has_many :domains
+
+  before_create :set_authentication_token
+
+  private
+
+  def set_authentication_token
+    self.authentication_token = SecureRandom.hex(30)
+  end
 end

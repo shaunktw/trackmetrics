@@ -1,12 +1,22 @@
 <br/>
-<div class="jumbotron">
-  <h1>Trackmetrics</h1>
-  <p>Trackmetrics is a Tracking and Reporting Serivce!</p>
-  <p>
-      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or 
-      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
-  </p>
-</div>
+  <div id="aboutwrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 name-desc">
+          <h2>TRACKMETRICS<br/>A TRACKING SERVICE API &<br/>REPORTING TOOL</h2>
+          <div class="name-zig"></div>
+          
+          <div class="col-md-6">
+            <p> 
+              <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %>
+              <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+            </p>
+          </div>
+        </div><! --/col-lg-8-->
+    
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </div><!-- /aboutwrap -->
 
 <div class="row">
   <div class="col-md-4">
@@ -21,4 +31,5 @@
     <h2>Makes you better looking</h2>
     <p>Bloccit will make you better looking: it's scientifically proven to make men look like Ryan Gosling and women look like Shakira.</p>
   </div>
+</div>
 </div>

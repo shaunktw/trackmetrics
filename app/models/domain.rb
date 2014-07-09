@@ -7,7 +7,7 @@ class Domain
   field :verification_token, type: String
 
   validates :name, length: {minimum: 5}, presence: true
-  validates_uniqueness_of :name, :url 
+  validates_uniqueness_of :url 
   validates_format_of :url, :with => URI::regexp(%w(http https http://))
 
   belongs_to :user
