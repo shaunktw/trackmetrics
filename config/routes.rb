@@ -15,4 +15,6 @@ Trackmetrics::Application.routes.draw do
   get 'about' => 'welcome#about'
   root 'welcome#index'
 
+  match 'events' => "events#index", via: :options
+
 end

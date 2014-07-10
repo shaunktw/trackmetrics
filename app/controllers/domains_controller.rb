@@ -9,6 +9,8 @@ class DomainsController < ApplicationController
 
   def show
     @domain = current_user.domains.find(params[:id])
+    @events = @domain.events
+    @event_week = @events.group_by {|event| event.created_at.beginning_of_week}
     authorize @domain 
   end
 
