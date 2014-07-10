@@ -40,6 +40,12 @@ class User
 
   before_create :set_authentication_token
 
+  def authorized_domain_referer?(request_origin)
+    uri = URI.parse(request_origin)
+    domain_name = "#{uri.scheme}://#{uri.host}"
+    self.domains.where(url: domain_name).any?
+  end
+
   private
 
   def set_authentication_token
