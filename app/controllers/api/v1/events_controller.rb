@@ -1,21 +1,5 @@
 class Api::V1::EventsController < Api::BaseController
 
-  # def create
-  #   @event = params.require(:event).permit(:name,:impression, :click)
-  #   @domain = Domain.find_by_name(@event[:name])
-
-  #   if @domain.nil?
-  #     flash[:error] = "Your domain was not found. Event not created!"
-  #   else
-  #     @new_event = @domain.events.build(params.require(:event).permit(:name, :impression, :click))
-  #     @new_event.save
-  #     flash[:notice] = "Your domain event was created successfully!"
-  #   end
-
-  #   respond_with(@new_event, location: api_v1_domain_url)
-
-  # end
-
   # POST /api/v1/events.json
   #
   # Params:
@@ -33,7 +17,7 @@ class Api::V1::EventsController < Api::BaseController
       if @event.save
         respond_with({}, status: :created)
       else
-        respnd_with({errors: @event.errors.full_messages}, status: :unprocessable_entity)
+        respond_with({errors: @event.errors.full_messages}, status: :unprocessable_entity)
       end
     end
     

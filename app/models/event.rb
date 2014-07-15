@@ -5,5 +5,5 @@ class Event
   field :uri,   type: String
 
   belongs_to :domain
-  belongs_to :event 
+  belongs_to :user
 end

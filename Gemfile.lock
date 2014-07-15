@@ -32,6 +32,7 @@ GEM
     bson (2.3.0)
     bson_ext (1.5.1)
     builder (3.1.4)
+    chartkick (1.3.2)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -55,6 +56,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    groupdate (2.2.1)
+      activesupport (>= 3)
     hike (1.2.3)
     httparty (0.13.1)
       json (~> 1.8)
@@ -161,10 +164,12 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.1.1)
   bson_ext
+  chartkick
   coffee-rails (~> 4.0.0)
   devise
   faker
   figaro
+  groupdate
   httparty (~> 0.13.1)
   jbuilder (~> 1.2)
   jquery-rails

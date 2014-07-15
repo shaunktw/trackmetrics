@@ -11,6 +11,7 @@ class Domain
   validates_format_of :url, :with => URI::regexp(%w(http https http://))
 
   belongs_to :user
+  has_many :events
 
   before_create :generate_verification_token
 

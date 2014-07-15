@@ -1,6 +1,6 @@
 <h1><%= @domain.name %></h1>
-
 <p><%= @domain.url %></p>
+
 
 <% if !@domain.active? %>
 <div class="alert alert-danger">
@@ -15,6 +15,8 @@
 <% if policy(@domain).edit? %>
 <%= link_to "Edit", edit_domain_path(@domain), class: 'btn btn-success' %>
 <% end %>
+
+ 
 <%= link_to "New Domain", new_domain_path(@domain), class: 'btn btn-success' %>
 <p><%= link_to "Back to List", domains_path %></p>
 

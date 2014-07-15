@@ -4,7 +4,7 @@ class User
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-         
+
   ## Database authenticatable
   field :name,               type: String
   field :email,              type: String, default: ""
@@ -37,11 +37,14 @@ class User
   validates_uniqueness_of :name, :email, :case_sensitive => false
 
   has_many :domains
-
+  has_many :events
+  
   before_create :set_authentication_token
-
+  
   def authorized_domain_referer?(request_origin)
-    uri = URI.parse(request_origin)
+    encoded_url = URI.encode(request_origin)
+    logger.info econded_url.inpsect
+    uri = URI.parse(encoded_url)
     domain_name = "#{uri.scheme}://#{uri.host}"
     self.domains.where(url: domain_name).any?
   end

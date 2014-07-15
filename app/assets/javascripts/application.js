@@ -14,4 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require chartkick
+//= require smoothscroll.js
+//= require interact.js
+//= require retina.js
+//= require modernizr.custom.js
+//= require interact.js
 //= require_tree .

@@ -13,5 +13,15 @@
 end
 domains = Domain.all
 
+50.times do 
+  Event.create(
+    name: Faker::Internet.name,
+    data: Hash[*Faker::Lorem.words(4)],
+    uri:  Faker::Internet.url
+    )
+end
+events = Event.all
+
 puts "Seed finished"
 puts"#{Domain.count} domains created"
+puts"#{Event.count} events created"

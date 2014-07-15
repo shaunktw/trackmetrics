@@ -4,10 +4,11 @@
   <title>Trackmetrics</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  
+  <%= javascript_include_tag "public/javascripts/highcharts.js", "chartkick" %>
   <%= csrf_meta_tags %>
   <meta name='trackmetrics_verification' content='de96d39ac5bc3e066b8976a158054b3fbdcc7034bfde5b9699e7f2088d53'/>
-<body>
+</head>
+<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
 
   <div class="container">
     <ul class="nav nav-tabs">
@@ -45,6 +46,5 @@
 
 <%= yield %>
 </div>
-
 </body>
 </html>
