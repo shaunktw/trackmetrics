@@ -3,7 +3,8 @@ Trackmetrics::Application.routes.draw do
   
   resources :verifications, only: [:create]
   resources :domains
-  
+
+ 
   devise_for :users
 
   namespace :api do

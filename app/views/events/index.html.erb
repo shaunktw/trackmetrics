@@ -1,0 +1,45 @@
+<h1>Events</h1>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('#event_chart').highcharts({
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: "Total Events"
+      },
+      xAxis: {
+        type: "datetime"
+      },
+      yAxis: {
+        title: {
+          text: "Events"
+        }
+      },
+      series: [{
+        data: <%= (1.weeks.ago.to_date..Date.today).map{|date| Event.total_on(date).to_i } %>
+      }]
+    });
+  });
+
+
+</script>
+
+<div id="event_chart" style="width:560px; height:300px;"></div>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Data</th>
+    <th>URI</th>
+  </tr>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.data %></td>
+        <td><%= event.uri %></td>
+        <td><%= event.created_at.to_s(:long) %></td>
+      </tr>
+    <% end %>
+  </table>
