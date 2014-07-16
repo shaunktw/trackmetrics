@@ -1,32 +1,9 @@
 <h1>Events</h1>
 
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-    $('#event_chart').highcharts({
-      chart: {
-        type: 'line'
-      },
-      title: {
-        text: "Total Events"
-      },
-      xAxis: {
-        type: "datetime"
-      },
-      yAxis: {
-        title: {
-          text: "Events"
-        }
-      },
-      series: [{
-        data: <%= (1.weeks.ago.to_date..Date.today).map{|date| Event.total_on(date).to_i } %>
-      }]
-    });
-  });
 
+<%= line_chart @events.group(:name).count %>
 
-</script>
-
-<div id="event_chart" style="width:560px; height:300px;"></div>
+<%= line_chart @events.group_by_day(:created_at).count %>
 
 <table class="table">
   <tr>

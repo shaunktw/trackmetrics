@@ -1,7 +1,7 @@
-$(function() {
-  new Highcharts.Chart({
-    chart: {
-      renderTo: "events_chart"
-    }
-  })
-}
+// $(function() {
+//   new Highcharts.Chart({
+//     chart: {
+//       renderTo: "events_chart"
+//     }
+//   })
+// }

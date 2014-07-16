@@ -1,8 +1,11 @@
 Trackmetrics::Application.routes.draw do
  
   
+  get "events/index"
   resources :verifications, only: [:create]
-  resources :domains
+  resources :domains do
+    resources :events, only: [:index]
+  end
 
  
   devise_for :users

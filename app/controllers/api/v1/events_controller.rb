@@ -1,32 +1,23 @@
 class Api::V1::EventsController < Api::BaseController
 
-  def index
-    @domain = Domain.where(params[:domain_id])
-    @events = @domain.events
-  end
-
   # POST /api/v1/events.json
   #
   # Params:
   # event_name: the name of the event
   # meta: all the meta data for the event as a hash
   def create
-    @user = User.find(params[:user_id])
-    @domain = @user.domains.find(params[:domain_id])
-    @events = @domain.events 
     # find the origin domain and authorize with current user
     if !current_user.authorized_domain_referer?(request.referer)
-      respond_with({errors: "You are not allowed to record events for this domain", code: 401}, status: :unauthorized)
+      respond_with([{errors: "You are not allowed to record events for this domain", code: 401}], status: :unauthorized)
     else
       # add the event to the domain
       uri = URI.parse(request.referer)
       domain_name = "#{uri.scheme}://#{uri.host}"
-      @event = current_user.domains.where(url: domain_name).events.build(name: params[:name], data: params[:data], uri: request.original_fullpath)  
-      @event.domain = @domain
+      @event = current_user.domains.where(url: domain_name).events.build(name: params[:name], data: params[:data], uri: request.original_fullpath) 
       if @event.save
-        respond_with({}, status: :created)
+        respond_with([{}], status: :created)
       else
-        respond_with({errors: @event.errors.full_messages}, status: :unprocessable_entity)
+        respond_with([{errors: @event.errors.full_messages}], status: :unprocessable_entity)
       end
     end
     
