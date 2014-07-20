@@ -51,7 +51,8 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'mongoid', '~> 4.0.0'
+gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
+gem 'geocoder'
 gem 'bson_ext'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.1.1'
@@ -62,4 +63,6 @@ gem 'httparty', '~> 0.13.1'
 gem 'nokogiri', '~> 1.6.2.1'
 gem 'pundit'
 gem 'chartkick'
+gem 'googlecharts'
 gem 'groupdate'
+

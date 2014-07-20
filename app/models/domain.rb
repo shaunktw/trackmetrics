@@ -18,7 +18,8 @@ class Domain
   def verify!
     self.update_attribute(:active, true)
   end
-  
+
+ 
   protected
 
   def generate_verification_token

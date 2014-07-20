@@ -1,22 +1,68 @@
 <h1>Events</h1>
 
 
-<%= line_chart @events.group(:name).count %>
+<%#= line_chart @line_graph_events%>
 
-<%= line_chart @events.group_by_day(:created_at).count %>
+<div class="tabbable">
+ <ul class="nav nav-tabs" id="proftabs">
+  <li><a href="#pie_tab"  data-toggle="tab" >Name of Event</a></li>
+  <li><a href="#bar_tab" data-toggle="tab">Time Created</a></li>
+  <li><a  href="#meter_tab" data-toggle="tab">No. of Clicks</a></li>
+  <li><a  href="#meter_tab" data-toggle="tab">No. of Views</a></li>
+  <li><a  href="#meter_tab" data-toggle="tab">No. of Users</a></li>
 
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Data</th>
-    <th>URI</th>
-  </tr>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.data %></td>
-        <td><%= event.uri %></td>
-        <td><%= event.created_at.to_s(:long) %></td>
-      </tr>
-    <% end %>
-  </table>
+   <div class="tab-content">
+        <div id="pie_tab" class="tab-pane">
+          <%= image_tag Gchart.pie( 
+              :theme => :pastel,
+              :title => "Events by Name",
+              :bg => 'ffffff',
+              :legend => @pie_graph_events.keys,
+              :data => @pie_graph_events.values,
+              :width => 400,
+              :height => 300
+            ) %>
+        </div>
+    <div id="bar_tab"  class="tab-pane">
+      <%= image_tag Gchart.bar(
+              :theme => :keynote,
+              :title => "Events by Time",
+              :bg => 'ffffff',
+              :legend => @bar_graph_events_day.keys,
+              :data => @bar_graph_events_day.values,
+              :width => 400,
+              :height => 300
+            ) %>
+    </div>
+    <div id="photos_tab"  class="tab-pane">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+          <div class="col-lg-10">
+            <h2>Your Events</h2>
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped tablesorter">
+                <thead>
+                  <tr>
+                    <th>Name <i class="fa fa-sort"></i></th>
+                    <th>Data <i class="fa fa-sort"></i></th>
+                    <th>Website URL<i class="fa fa-sort"></i></th>
+                    <th>Created At<i class="fa fa-sort"></i></th>
+                  </tr>
+                </thead>
+                <% @events.each do |event| %>
+                <tbody>
+                  <tr>
+                    <td><%= event.name %></td>
+                    <td><%= event.data %></td>
+                    <td><%= event.uri %></td>
+                    <td><%= event.created_at.strftime("%Y: %C: %H%M") %></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+</div>

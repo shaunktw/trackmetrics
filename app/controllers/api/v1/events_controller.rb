@@ -13,7 +13,7 @@ class Api::V1::EventsController < Api::BaseController
       # add the event to the domain
       uri = URI.parse(request.referer)
       domain_name = "#{uri.scheme}://#{uri.host}"
-      @event = current_user.domains.where(url: domain_name).events.build(name: params[:name], data: params[:data], uri: request.original_fullpath) 
+      @event = current_user.domains.where(url: domain_name).events.build(name: params[:name], data: params[:data], uri: request.original_fullpath, visitor_ip: request.remote_ip) 
       if @event.save
         respond_with([{}], status: :created)
       else
