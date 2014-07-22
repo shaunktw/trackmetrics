@@ -13,12 +13,9 @@
 //= require jsapi
 //= require jquery
 //= require jquery_ujs
+//= require tables.js
+//= require jquery.tablesorter.js
 //= require turbolinks
 //= require bootstrap
 //= require chartkick
-//= require smoothscroll.js
-//= require interact.js
-//= require retina.js
-//= require modernizr.custom.js
-//= require interact.js
 //= require_tree .

@@ -1,3 +1,18 @@
+/*
+ * Author: Carlos Alvarez
+ * URL: http://Alvarez.is
+ *
+ * Project Name: SHIELD - Free Bootstrap 3 Theme
+ * Version: 1.0
+ * Date: 02-11-2013
+ * URL: http://blacktie.co/
+ */
+
+
+/* ==========================================================================
+   Base Styles and Bootstrap Modifications
+   ========================================================================== */
+
 html,
 button,
 input,
@@ -256,8 +271,8 @@ a:after {
    ========================================================================== */
 
 #headerwrap {
-	background: url("bg/divider1.jpg") no-repeat center top;
-	margin-top: -50px;
+	background: url(bgnyc.jpg) no-repeat center top;
+	margin-top: -30px;
 	padding-top:120px;
 	text-align:center;
 	background-attachment: relative;

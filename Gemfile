@@ -65,4 +65,7 @@ gem 'pundit'
 gem 'chartkick'
 gem 'googlecharts'
 gem 'groupdate'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 

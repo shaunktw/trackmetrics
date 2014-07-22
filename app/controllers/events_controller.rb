@@ -16,7 +16,7 @@ class EventsController < ApplicationController
    @bar_graph_events.sort.each do |day, events|
       @bar_graph_events_day[day] = events.count
    end
-   
+  
    
 end
 

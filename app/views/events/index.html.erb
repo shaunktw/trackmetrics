@@ -1,8 +1,8 @@
 <h1>Events</h1>
 
 
-<%#= line_chart @line_graph_events%>
-
+<div class="row">
+<div class="col-lg-10">
 <div class="tabbable">
  <ul class="nav nav-tabs" id="proftabs">
   <li><a href="#pie_tab"  data-toggle="tab" >Name of Event</a></li>
@@ -20,10 +20,11 @@
               :legend => @pie_graph_events.keys,
               :data => @pie_graph_events.values,
               :width => 400,
-              :height => 300
+              :height => 300,
+              :labels => @pie_graph_events.keys
             ) %>
         </div>
-    <div id="bar_tab"  class="tab-pane">
+    <div id="bar_tab"  class="tab-pane" align="left">
       <%= image_tag Gchart.bar(
               :theme => :keynote,
               :title => "Events by Time",
@@ -31,12 +32,13 @@
               :legend => @bar_graph_events_day.keys,
               :data => @bar_graph_events_day.values,
               :width => 400,
-              :height => 300
+              :height => 300,
+              :axis_with_labels => ['x', 'y']
             ) %>
-    </div>
-    <div id="photos_tab"  class="tab-pane">
+    </div>      
     </div>
   </div>
+</div>
 </div>
 
 <div class="row">
