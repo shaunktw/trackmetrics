@@ -21,7 +21,7 @@ Trackmetrics::Application.routes.draw do
   get 'about' => 'welcome#about'
   root 'welcome#index'
 
-  match 'events' => "events#index", via: :options
+  match 'events' => "events#index", via: [:post, :options]
   mount Sidekiq::Web, at: '/sidekiq'
 
 end

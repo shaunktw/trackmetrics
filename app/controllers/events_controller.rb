@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @domain = Domain.find_by(id: params[:domain_id])
-    @events = @domain.events
+    @events = @domain.events.paginate :page => params[:page], :per_page => 10
 
     @pie_graph_events = @events.group_by(&:name)
     @pie_graph_events.each_pair do |key, val|

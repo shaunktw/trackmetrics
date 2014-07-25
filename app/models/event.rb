@@ -32,6 +32,6 @@ class Event
   protected
 
   def get_geocode
-    EventWorker.perform_async(self.id.to_s)
+    EventsWorker.perform_async(self.id.to_s)
   end
 end

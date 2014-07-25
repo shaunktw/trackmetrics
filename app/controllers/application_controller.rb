@@ -9,16 +9,6 @@ class ApplicationController < ActionController::Base
 #    redirect_to root_url, alert: exception.message
 #  end
 
-def request_ip
-  if Rails.env.development? 
-     response = HTTParty.get('http://api.hostip.info/get_html.php')
-     ip = response.split("\n")
-     ip.last.gsub /IP:\s+/, ''      
-   else
-     request.remote_ip
-   end 
-end
-
   protected
 
   def configure_permitted_parameters

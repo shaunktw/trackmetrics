@@ -68,4 +68,5 @@ gem 'groupdate'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+gem "will_paginate_mongoid"
 

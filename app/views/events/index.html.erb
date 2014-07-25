@@ -19,9 +19,10 @@
               :bg => 'ffffff',
               :legend => @pie_graph_events.keys,
               :data => @pie_graph_events.values,
-              :width => 400,
+              :width => 700,
               :height => 300,
-              :labels => @pie_graph_events.keys
+              :labels => @pie_graph_events.keys,
+              :chartArea => {left:10,top:20,width:"100%",height:"100%"},
             ) %>
         </div>
     <div id="bar_tab"  class="tab-pane" align="left">
@@ -31,9 +32,10 @@
               :bg => 'ffffff',
               :legend => @bar_graph_events_day.keys,
               :data => @bar_graph_events_day.values,
-              :width => 400,
+              :width => 800,
               :height => 300,
-              :axis_with_labels => ['x', 'y']
+              :axis_with_labels => ['x', 'y'],
+              :bar_width_and_spacing => {:spacing => 10, :group_spacing => 12}
             ) %>
     </div>      
     </div>
@@ -63,6 +65,7 @@
                     <td><%= event.created_at.strftime("%Y: %C: %H%M") %></td>
                   </tr>
                   <% end %>
+                  <%= will_paginate @events %>
                 </tbody>
               </table>
             </div>
