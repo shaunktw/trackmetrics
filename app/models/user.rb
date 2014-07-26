@@ -38,14 +38,13 @@ class User
 
   has_many :domains
   has_many :events
-  
+
   before_create :set_authentication_token
   
   def authorized_domain_referer?(request_origin)
-    encoded_url = URI.encode(request_origin)
-    logger.info econded_url.inpsect
-    uri = URI.parse(encoded_url)
-    domain_name = "#{uri.scheme}://#{uri.host}"
+    uri = URI.parse(request_origin)
+    domain_name = "#{uri.scheme}://#{uri.host}:#{uri.port}/"
+    #logger.info "domain_name -----> #{domain_name}"
     self.domains.where(url: domain_name).any?
   end
 
