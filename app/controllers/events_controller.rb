@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
    respond_to do |format|
     format.html
-    format.csv { send_data @events_csv.to_csv }
+    format.csv { send_data @events_csv.to_csv, filename: "#{@domain.name}_events_#{Time.now.to_s(:db)}.csv" }
     format.xls # { send_data @events.to_csv(col_sep: "\t") }
   end  
 end
