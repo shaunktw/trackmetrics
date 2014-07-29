@@ -13,6 +13,7 @@
       </div>
     </div>
   <% end %>
+
   <% if policy(Domain.new).create? %>
      <%= link_to "Add a new Domain", new_domain_url, class: 'btn btn-success' %>
   <% end %>

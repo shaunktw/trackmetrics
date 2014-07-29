@@ -1,6 +1,18 @@
 <h1><%= @domain.name %></h1>
 <p><%= @domain.url %></p>
 
+<div>
+  <p> Please include the following code in your <strong>index.html page</strong> </p>
+  <pre> <%%= javascript_include_tag //trackmetrics.herokuapp.com//assets/trackmetrics.js%></pre>
+<pre> 
+&lt;script&gt;
+    Trackmetrics.setAuthToken('<%= current_user.authentication_token %>');
+    Trackmetrics.send("page_view",{test: true});
+&lt;/script&gt;
+</pre> 
+</div>
+
+
 <%= link_to "Dashboard", domain_events_url(@domain), class: "btn btn-lg btn-success" %>
 
 <% if !@domain.active? %>
