@@ -43,7 +43,13 @@ class User
   
   def authorized_domain_referer?(request_origin)
     uri = URI.parse(request_origin)
-    domain_name = "#{uri.scheme}://#{uri.host}:#{uri.port}/"
+
+    if [80,443].include?(uri.port)
+      domain_name = "#{uri.scheme}://#{uri.host}/"
+    else
+      domain_name = "#{uri.scheme}://#{uri.host}:#{uri.port}/"
+    end
+
     #logger.info "domain_name -----> #{domain_name}"
     self.domains.where(url: domain_name).any?
   end

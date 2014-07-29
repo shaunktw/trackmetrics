@@ -29,6 +29,15 @@ class Event
     end
   end
 
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ["name", "data", "uri", "created_at"]
+      all.each do |event|
+        csv << [event.name, event.data, event.uri, event.created_at]#event.attributes.values_at(*column_names)
+      end
+    end
+  end
+
   protected
 
   def get_geocode

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Data</Data></Cell>
+        <Cell><Data ss:Type="String">Website URL</Data></Cell>
+        <Cell><Data ss:Type="String">Created At</Data></Cell>
+      </Row>
+    <% @events.each do |event| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= event.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.data %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.uri %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= event.created_at.strftime("%Y: %C: %H%M") %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
